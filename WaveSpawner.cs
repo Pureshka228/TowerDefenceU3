@@ -1,15 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class WaveSpawner : MonoBehaviour {
 
     private const float _TIME_BETWEEN_WAVES = 8f;
-    private float m_Countdown = 2f;
+    private float m_Countdown = 5f;
     private int m_WaveNumber;
 
     [Header("References")]
     [SerializeField] private Transform enemyPrefab;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Text waveCountdownText;
 
     private void Update() {
         
@@ -19,6 +21,7 @@ public class WaveSpawner : MonoBehaviour {
         }
 
         m_Countdown -= Time.deltaTime;
+        waveCountdownText.text = Mathf.Round(m_Countdown).ToString();
 
     }
 
@@ -31,7 +34,7 @@ public class WaveSpawner : MonoBehaviour {
         
         m_WaveNumber++;
     }
-     
+    
     private void SpawnEnemy() {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
