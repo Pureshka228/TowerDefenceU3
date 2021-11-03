@@ -27,7 +27,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private IEnumerator SpawnWave() {  
 
-        for (int i = 0; i < m_WaveNumber; i++) {
+        for (int i = 0; i <= m_WaveNumber; i++) {
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
         }
