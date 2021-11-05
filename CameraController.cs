@@ -5,13 +5,14 @@ public class CameraController : MonoBehaviour {
     
     private const float _PAN_SPEED = 30f;
     private const float _PAN_BORDER_THICKNESS = 10f;
-    private const float _SCROLL_SPEED = 30f;
+    private const float _SCROLL_SPEED = 20f;
     private const float _MIN_Y = 10f;
     private const float _MAX_Y = 100f;
     private bool m_DoMovement = true;
 
     private void Start() {
         transform.position = new Vector3(-10f, 100f, -50f);
+        transform.rotation = Quaternion.Euler(70f, 0f, 0f);
     }
 
     private void Update() {
