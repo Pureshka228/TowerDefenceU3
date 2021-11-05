@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour {
 
-    public static BuildManager instance; // < 
+    public static BuildManager instance;
 
     private GameObject m_TurretToBuild;
 
