@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 
 public class Turret : MonoBehaviour {
-
-    private const float _RANGE = 15f;
-    private const float _TURN_SPEED = 10f;
-    private const float _FIRE_RATE = 1f;
+    
     private const string _ENEMY_TAG = "Enemy";
 
-    private float m_FireCountdown; // <
+    private float m_Range = 15f;
+    private float m_TurnSpeed = 10f;
+    private float m_FireRate = 1f;
+    private float m_FireCountdown;
 
     private Transform m_Target;
 
@@ -26,12 +26,12 @@ public class Turret : MonoBehaviour {
 
         Vector3 direction = m_Target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, _TURN_SPEED * Time.deltaTime).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, m_TurnSpeed * Time.deltaTime).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f).normalized;
 
         if (m_FireCountdown <= 0f) {            // <
             Shoot();
-            m_FireCountdown = 1f / _FIRE_RATE;
+            m_FireCountdown = 1f / m_FireRate;
         }
 
         m_FireCountdown -= Time.deltaTime; // ^
@@ -51,7 +51,7 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        if (nearestEnemy != null && shortestDistance <= _RANGE) {
+        if (nearestEnemy != null && shortestDistance <= m_Range) {
             m_Target = nearestEnemy.transform;
         } else {
             m_Target = null;
@@ -68,6 +68,6 @@ public class Turret : MonoBehaviour {
 
     private void OnDrawGizmosSelected() { 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _RANGE);
+        Gizmos.DrawWireSphere(transform.position, m_Range);
     }
 }

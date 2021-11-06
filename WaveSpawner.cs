@@ -4,7 +4,7 @@ using System.Collections;
 
 public class WaveSpawner : MonoBehaviour {
 
-    private const float _TIME_BETWEEN_WAVES = 8f;
+    private float m_TimeBetweenWaves = 8f;
     private float m_Countdown = 5f;
     private int m_WaveNumber;
 
@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour {
         
         if (m_Countdown <= 0f) {
             StartCoroutine(SpawnWave());
-            m_Countdown = _TIME_BETWEEN_WAVES;
+            m_Countdown = m_TimeBetweenWaves;
         }
 
         m_Countdown -= Time.deltaTime;

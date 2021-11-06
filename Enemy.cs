@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    private const float _SPEED = 8f;
+    private float m_Speed = 8f;
     private int m_WavepointIndex;
 
     private Transform m_Target;
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
 
     private void MoveByPoints() {
         Vector3 direction = m_Target.position - transform.position;
-        transform.Translate(direction.normalized * _SPEED * Time.deltaTime, Space.World);
+        transform.Translate(direction.normalized * m_Speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, m_Target.position) <= 0.4f) {
             GetNextWaypoint();

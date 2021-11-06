@@ -3,7 +3,8 @@ using UnityEngine;
 public class ChangingWeather : MonoBehaviour {
 
     private const float _START_VALUE = 60f;
-    private const float _SPEED = 1f;
+    
+    private float m_Speed = 1f;
     private float m_Rotation;
     
     private void Awake() {
@@ -16,7 +17,7 @@ public class ChangingWeather : MonoBehaviour {
     }
 
     private float Rotation() {
-        m_Rotation += _SPEED * Time.deltaTime;
+        m_Rotation += m_Speed * Time.deltaTime;
         if (m_Rotation >= 360f) m_Rotation -= 360f;
         return m_Rotation;
     }
