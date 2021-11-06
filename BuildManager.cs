@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour {
 
-    public static BuildManager instance;
+    public static BuildManager Instance;
 
     private GameObject m_TurretToBuild;
 
@@ -10,7 +10,7 @@ public class BuildManager : MonoBehaviour {
     [SerializeField] private GameObject standartTurretPrefab;
 
     private void Awake() {
-        instance = this;
+        Instance = this;
     }
 
     private void Start() {

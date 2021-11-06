@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     
-    private const float _PAN_BORDER_THICKNESS = 10f;
+    private const float _PAN_SPEED = 30f;
     private const float _MIN_Y = 10f;
     private const float _MAX_Y = 100f;
-    
-    private float m_PanSpeed = 30f;
+
     private float m_ScrollSpeed = 20f;
     private bool m_DoMovement = true;
 
@@ -30,10 +29,10 @@ public class CameraController : MonoBehaviour {
         
         // CAMERA MOVEMENT
         m_PanInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        m_PanVelocity = m_PanInput.normalized * m_PanSpeed;
+        m_PanVelocity = m_PanInput.normalized * _PAN_SPEED;
         transform.position += m_PanVelocity * Time.deltaTime;
         
-        // SCROLLING
+        // SCROLLING (changes needed)
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Vector3 position = transform.position;
         
